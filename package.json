@@ -1,0 +1,15 @@
+{
+  "name": "student_management_system_2024",
+  "version": "1.0.0",
+  "description": "This is simple cli student management system in oops typescript",
+  "main": "./source/ndex.js",
+  "type": "module",
+  "bin": {
+    "student_management_system_2024": "./dist/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Syed Safdar Ali Shah",
+  "license": "MIT"
+}
