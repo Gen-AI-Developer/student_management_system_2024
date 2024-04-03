@@ -7,3 +7,9 @@ interface student_structure {
     Semester: String,
     Department: String,
 }
+
+class SMS implements student_structure {
+     constructor new SMS(name,gender,fathername,id,semester,department){
+
+    }
+}
