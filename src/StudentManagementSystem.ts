@@ -6,11 +6,16 @@ interface Student {
     courses: string[];
     balance: number;
 }
-
 // Define a Course interface to represent course information
 interface Course {
     id: string;
     name: string;
     creditHours: number;
     tuitionFee: number;
+}
+// Define a Fee interface to represent Fee Information
+interface FeeInformation {
+    id: string;
+    is_submitted: false;
+    is_remaining: number;
 }
