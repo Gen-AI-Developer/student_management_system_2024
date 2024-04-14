@@ -19,3 +19,7 @@ interface FeeInformation {
     is_submitted: false;
     is_remaining: number;
 }
+
+class ManagementSystem {
+
+}
