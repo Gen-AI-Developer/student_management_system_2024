@@ -23,3 +23,4 @@ interface FeeInformation {
 class ManagementSystem {
 
 }
+const safdar = 787;
