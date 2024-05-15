@@ -31,8 +31,18 @@ class StudentManagementSystem {
     ) {
 
     }
-    public enroll(course_name: courses) {
+    public enroll(course_name: courses): void {
         this.course_name = course_name;
+    }
+    public view_balance(): void {
+
+    }
+    public pay_tution(): number {
+
+        return 0
+    }
+    public show_status(): void {
+
     }
 
 }
