@@ -8,6 +8,7 @@
 // student_id: A unique 5-digit ID.
 // courses: A list of courses the student is enrolled in.
 // balance: The current balance for tuition fees.
+
 // Methods:
 
 // enroll(course): Adds a course to the student's list.
