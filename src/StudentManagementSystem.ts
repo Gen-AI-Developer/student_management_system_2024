@@ -1,55 +1,78 @@
-// 3. System Design
-// a. Classes and Attributes
-// Student Class: This class will hold attributes and methods relevant to a student.
+import inquirer from "inquirer";
 
-// Attributes:
+class Student {
+    // Private field
+    #students;
 
-// name: Student's name.
-// student_id: A unique 5-digit ID.
-// courses: A list of courses the student is enrolled in.
-// balance: The current balance for tuition fees.
+    constructor() {
+        // Initialize the private students map
+        this.#students = new Map();
+    }
 
-// Methods:
+    // Method to add a student
+    addStudent(student_id: number, studentData: any) {
+        if (this.#students.has(student_id)) {
+            throw new Error(`Student with ID ${student_id} already exists.`);
+        }
+        this.#students.set(student_id, studentData);
+    }
 
-// enroll(course): Adds a course to the student's list.
-// view_balance(): Returns the current balance.
-// pay_tuition(amount): Deducts the amount from the balance.
-// show_status(): Displays the student's details.
-enum courses {
-    'CS' = "Computer Science",
-    'MBA' = "Management Business Accounting",
-    'BBA' = "Bachelor of Business Administration",
-    'BSPHY' = "Bachelor of Sciences in Physics",
+    // Method to get a student's data by ID
+    getStudent(student_id: number) {
+        return this.#students.get(student_id) || null;
+    }
+
+    // Method to delete a student by ID
+    deleteStudent(student_id: number) {
+        if (!this.#students.has(student_id)) {
+            throw new Error(`Student with ID ${student_id} does not exist.`);
+        }
+        this.#students.delete(student_id);
+    }
+
+    // Method to update a student's data
+    updateStudent(student_id: number, newStudentData: any) {
+        if (!this.#students.has(student_id)) {
+            throw new Error(`Student with ID ${student_id} does not exist.`);
+        }
+        this.#students.set(student_id, newStudentData);
+    }
+
+    // Method to get all students
+    getAllStudents() {
+        return Array.from(this.#students.entries());
+    }
 }
 
-class StudentManagementSystem {
-    constructor(
-        public student_id: number,
-        private name: string,
-        private course_name: string,
-        private balance: number,
-    ) {
+// Example usage
+// studentClass.addStudent(123, { name: 'John Doe', age: 20, major: 'Computer Science' });
+// studentClass.addStudent(124, { name: 'Jane Smith', age: 22, major: 'Mathematics' });
 
-    }
-    public enrolled_in(): string {
-        return this.course_name.toString();
+// console.log(studentClass.getStudent(123)); // { name: 'John Doe', age: 20, major: 'Computer Science' }
+// console.log(studentClass.getAllStudents()); // [ ['123', { name: 'John Doe', age: 20, major: 'Computer Science' }], ['124', { name: 'Jane Smith', age: 22, major: 'Mathematics' }] ]
 
-    }
-    public view_balance(): number {
-        return this.balance;
+// studentClass.updateStudent(123, { name: 'John Doe', age: 21, major: 'Computer Science' });
+// console.log(studentClass.getStudent(123)); // { name: 'John Doe', age: 21, major: 'Computer Science' }
 
-    }
-    public pay_tution(pt: number): void {
-        this.balance = this.balance + pt
-    }
-    public show_status(): void {
+// studentClass.deleteStudent(124);
+// console.log(studentClass.getAllStudents()); // [ ['123', { name: 'John Doe', age: 21, major: 'Computer Science' }] ]
 
+async function main() {
+    const studentClass = new Student();
 
-    }
-
+    const studentManagementSystem = await inquirer.prompt([
+        {
+            type: 'list',
+            name: 'student_menu',
+            choices: [
+                'View All Students',
+                'Add  Students',
+                'Del  Student',
+                'Add Std Balance',
+                'Remove Std Balance',
+                'Assign Courses',
+                'Exit  SMS',
+            ]
+        }
+    ])
 }
-
-let studentOne = new StudentManagementSystem(1234, "safdar", 'CS', 1000);
-console.log(studentOne.enrolled_in);
-console.log(studentOne.pay_tution(1000))
-console.log(studentOne.show_status)
