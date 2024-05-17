@@ -13,7 +13,7 @@
   "author": "Syed Safdar Ali Shah",
   "license": "MIT",
   "dependencies": {
-    "inquirer": "^9.2.18"
+    "inquirer": "^9.2.21"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.7"

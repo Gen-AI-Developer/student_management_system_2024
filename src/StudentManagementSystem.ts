@@ -31,18 +31,25 @@ class StudentManagementSystem {
     ) {
 
     }
-    public enroll(course_name: courses): void {
-        this.course_name = course_name;
-    }
-    public view_balance(): void {
+    public enrolled_in(): string {
+        return this.course_name.toString();
 
     }
-    public pay_tution(): number {
+    public view_balance(): number {
+        return this.balance;
 
-        return 0
+    }
+    public pay_tution(pt: number): void {
+        this.balance = this.balance + pt
     }
     public show_status(): void {
+
 
     }
 
 }
+
+let studentOne = new StudentManagementSystem(1234, "safdar", 'CS', 1000);
+console.log(studentOne.enrolled_in);
+console.log(studentOne.pay_tution(1000))
+console.log(studentOne.show_status)
